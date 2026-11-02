@@ -1,0 +1,24 @@
+{
+  "name": "customer-support-pilot",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "start": "docker compose up -d",
+    "stop": "docker compose stop",
+    "status": "docker compose ps",
+    "intake": "node workbench/server.mjs",
+    "integrate:maxkb": "node scripts/integrate-maxkb.mjs",
+    "seed": "node scripts/seed-pilot.mjs",
+    "verify": "node scripts/verify-pilot.mjs",
+    "verify:browser": "node scripts/chat-browser-check.mjs"
+  },
+  "devDependencies": {
+    "acorn": "^8.18.0",
+    "playwright": "^1.55.0"
+  },
+  "dependencies": {
+    "express": "^5.2.1",
+    "lucide": "^1.47.0",
+    "zod": "^4.6.5"
+  }
+}

@@ -1,0 +1,20 @@
+.embedded body { background: #f5f6f7; }
+.embedded header { height: 52px; padding: 0 24px; gap: 0; }
+.embedded header .brand, .embedded header .local { display: none; }
+.embedded nav { height: 52px; }
+.embedded main { max-width: 1200px; margin: 24px auto; }
+.embedded h1 { font-size: 22px; letter-spacing: 0; }
+.embedded h2 { font-size: 20px; letter-spacing: 0; }
+.embedded .eyebrow { letter-spacing: 0; }
+.embedded .hero { display: block; }
+.embedded .hero .stepper { display: none; }
+.embedded .card { border-radius: 4px; box-shadow: none; }
+.embedded .row { border-radius: 4px; }
+.embedded input, .embedded select, .embedded textarea,
+.embedded .primary, .embedded .ghost { border-radius: 4px; }
+.embedded .actions { flex-wrap: wrap; }
+@media (max-width: 760px) {
+  .embedded main { padding: 0 12px; }
+  .embedded header { padding: 0 12px; }
+  .embedded .row { gap: 12px; flex-wrap: wrap; }
+}

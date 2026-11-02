@@ -1,0 +1,9 @@
+services:
+  maxkb:
+    volumes:
+      - type: bind
+        source: ./.local/maxkb-integration/admin
+        target: /opt/maxkb-app/apps/static/admin
+        read_only: true
+        bind:
+          create_host_path: false

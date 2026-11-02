@@ -1,0 +1,12 @@
+name: customer-support-pilot
+services:
+  maxkb:
+    image: registry.fit2cloud.com/maxkb/maxkb:v2.10.6-lts
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:8088:8080"
+    volumes:
+      - maxkb-data:/opt/maxkb
+
+volumes:
+  maxkb-data:

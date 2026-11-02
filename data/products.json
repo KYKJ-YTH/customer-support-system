@@ -1,0 +1,14 @@
+[
+  {
+    "id": "UNASSIGNED-BATTERY-001",
+    "name": "锂电池（型号待确认）",
+    "status": "pending_identity",
+    "model": null,
+    "sku": null,
+    "store_label": "TH-S5店-aekasam",
+    "product_urls": [],
+    "source": "sources/customer-question.png",
+    "pending_cases": ["BATTERY-001"],
+    "knowledge_id": null
+  }
+]
