@@ -1,0 +1,34 @@
+# 生产环境配置 - 通过 nginx 反向代理对外提供 HTTPS 访问
+# 用法: docker compose -f compose.yaml -f compose.prod.yaml up -d
+#
+# 与 compose.override.yaml 的关系:
+#   compose.override.yaml 由 `npm run integrate:maxkb` 自动生成,挂载录入页面覆盖层
+#   生产环境同样需要这个覆盖层,因此部署顺序为:
+#   1. docker compose -f compose.yaml up -d        (首次启动空实例)
+#   2. npm run integrate:maxkb                      (生成覆盖层)
+#   3. docker compose -f compose.yaml -f compose.prod.yaml up -d  (生产启动)
+#   compose.prod.yaml 不与 compose.override.yaml 冲突,两者可共存
+#   但建议生产用 -f 显式指定,避免本地 override 的 127.0.0.1 绑定覆盖生产配置
+
+services:
+  maxkb:
+    ports: !reset []          # 清除 compose.yaml 的 127.0.0.1 绑定
+    expose:
+      - "8080"                # 仅暴露给同一网络内的 nginx,不直接映射到宿主机
+    networks:
+      - default
+
+  nginx:
+    image: nginx:1.27-alpine
+    restart: unless-stopped
+    depends_on:
+      - maxkb
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./nginx/conf.d:/etc/nginx/conf.d:ro
+      - ./nginx/certs:/etc/nginx/certs:ro
+      - ./nginx/logs:/var/log/nginx
+    networks:
+      - default
